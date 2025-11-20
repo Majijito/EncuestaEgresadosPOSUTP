@@ -33,18 +33,11 @@
       "section": "A"
     },
     {
-      "column": "¿Cuál es el promedio de su ingreso laboral al año? ",
-      "label": "Ingreso laboral anual",
-      "type": "CATEGORICA",
-      "section": "A"
-    },
-    {
       "column": "La organización (Universidad o Empresa) en la que usted labora pertenece al sector:",
       "label": "Sector de la organización donde labora",
       "type": "CATEGORICA",
       "section": "A"
     },
-
     {
       "column": "¿Recomendaría Usted el programa de Posgrado que estudió?",
       "label": "Recomendaría el programa de posgrado",
