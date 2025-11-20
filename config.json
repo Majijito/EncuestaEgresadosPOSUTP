@@ -1,0 +1,259 @@
+{
+  "data_file": "datos/encuesta_egresados_pos.csv",
+  "top_k_categories": 10,
+  "questions": [
+    {
+      "column": "¿En la actualidad, en qué actividad ocupa la mayor parte de su tiempo?",
+      "label": "Actividad principal actual",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+    {
+      "column": "En esa actividad usted es:",
+      "label": "Condición en esa actividad",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+    {
+      "column": "¿Cuántos meses ha estado buscando trabajo?",
+      "label": "Meses buscando empleo",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+    {
+      "column": "¿Cómo logró el cargo actual?",
+      "label": "Cómo logró el cargo actual",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+    {
+      "column": "Su actividad laboral es:",
+      "label": "Actividad laboral actual",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+    {
+      "column": "¿Cuál es el promedio de su ingreso laboral al año? ",
+      "label": "Ingreso laboral anual",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+    {
+      "column": "La organización (Universidad o Empresa) en la que usted labora pertenece al sector:",
+      "label": "Sector de la organización donde labora",
+      "type": "CATEGORICA",
+      "section": "A"
+    },
+
+    {
+      "column": "¿Recomendaría Usted el programa de Posgrado que estudió?",
+      "label": "Recomendaría el programa de posgrado",
+      "type": "BINARIA",
+      "section": "B"
+    },
+    {
+      "column": "Califique de 1 a 5 la calidad de la formación que imparte el programa de posgrado sobre sus estudiantes.Siendo 5 la calificación más alta.",
+      "label": "Calidad de la formación del programa de posgrado",
+      "type": "LIKERT",
+      "section": "B"
+    },
+    {
+      "column": "¿Cuál es su apreciación sobre la calidad de las competencias pedagógicas de los docentes del programa?",
+      "label": "Calidad de las competencias pedagógicas de los docentes",
+      "type": "CATEGORICA",
+      "section": "B"
+    },
+    {
+      "column": "¿Se encuentra satisfecho con el programa de Posgrado del cual egreso?",
+      "label": "Satisfacción con el programa de posgrado",
+      "type": "BINARIA",
+      "section": "B"
+    },
+    {
+      "column": "Si tiene sugerencias para mejorar la calidad de ésta formación, por favor menciónelas:",
+      "label": "Sugerencias para mejorar la calidad de la formación",
+      "type": "CATEGORICA",
+      "section": "B"
+    },
+
+    {
+      "label": "Sistemas de información que conoce",
+      "type": "MULTI_COLS",
+      "section": "C",
+      "columns": [
+        "Campus informa",
+        "Página de la UTP",
+        "Universitaria estéreo",
+        "Correo electrónico",
+        "Mensajes de texto",
+        "Redes sociales"
+      ]
+    },
+    {
+      "column": "Califique de 1 a 5 la eficacia de los sistemas de información y mecanismos de comunicación actuales de la institución. Siendo 5 la calificación más alta.",
+      "label": "Eficacia de los sistemas de información y comunicación",
+      "type": "LIKERT",
+      "section": "C"
+    },
+    {
+      "column": "¿Considera Usted que el programa académico del cual egresó hace seguimiento a sus egresados?",
+      "label": "El programa hace seguimiento a sus egresados",
+      "type": "BINARIA",
+      "section": "C"
+    },
+
+    {
+      "column": "¿Ha realizado algún tipo producción científica?",
+      "label": "Ha realizado producción científica",
+      "type": "BINARIA",
+      "section": "D"
+    },
+    {
+      "column": "¿Cuántas publicaciones tiene?",
+      "label": "Número de publicaciones científicas",
+      "type": "CATEGORICA",
+      "section": "D"
+    },
+    {
+      "column": "Su producción científica se encuentra registrada en las bases internacionales de revistas indexadas?",
+      "label": "Producción científica registrada en bases internacionales",
+      "type": "BINARIA",
+      "section": "D"
+    },
+    {
+      "column": "¿En cuál de las siguientes categorías se encuentra registrada su producción?",
+      "label": "Categoría de registro de la producción",
+      "type": "CATEGORICA",
+      "section": "D"
+    },
+    {
+      "column": "¿Ha recibido algún premio científico o alguna otra distinción por su producción científica?",
+      "label": "Ha recibido premios o distinciones científicas",
+      "type": "BINARIA",
+      "section": "D"
+    },
+    {
+      "column": "¿Cuál (es)?",
+      "label": "Premios o distinciones recibidas",
+      "type": "CATEGORICA",
+      "section": "D"
+    },
+    {
+      "label": "Campos en los que ha realizado aportes sociales",
+      "type": "MULTI_COLS",
+      "section": "D",
+      "columns": [
+        "Empresarial",
+        "Artístico",
+        "Científico",
+        "Político",
+        "Cultural",
+        "Económico",
+        "Social",
+        "Educativo",
+        "Comunitario",
+        "Ambiental",
+        "Salud",
+        "Institucionales",
+        "Ninguno"
+      ]
+    },
+    {
+      "column": "Describa que aportes ha realizado y que impacto ha tenido (si aplica)",
+      "label": "Descripción de aportes sociales e impacto",
+      "type": "CATEGORICA",
+      "section": "D"
+    },
+
+    {
+      "column": "¿Tiene interés por crear un emprendimiento?",
+      "label": "Interés por crear un emprendimiento",
+      "type": "BINARIA",
+      "section": "E"
+    },
+    {
+      "label": "Temas en los que debe mejorar competencias para emprender",
+      "type": "MULTI_COLS",
+      "section": "E",
+      "columns": [
+        "Liderazgo",
+        "Disposición al aprendizaje",
+        "Comunicación",
+        "Trabajo en equipo",
+        "Habilidades comerciales",
+        "Otros. ¿Cuáles?"
+      ]
+    },
+    {
+      "label": "Principales dificultades para crear una empresa",
+      "type": "MULTI_COLS",
+      "section": "E",
+      "columns": [
+        "No estar seguro si la idea pueda convertirse en un negocio exitoso",
+        "Falta de recursos económicos propios",
+        "No poder encontrar socios de confianza",
+        "No tener conocimientos para la creación de una empresa",
+        "Difícil acceso a las entidades financieras",
+        "Falta de apoyo del gobierno",
+        "Falta de apoyo del gobierno19",
+        "Temor para asumir el riesgo",
+        "Otros. ¿Cuáles?20"
+      ]
+    },
+    {
+      "column": "Le interesa participar en procesos de educación continuada",
+      "label": "Interés en educación continuada",
+      "type": "BINARIA",
+      "section": "E"
+    },
+    {
+      "label": "Rol en educación continuada en el que le gustaría participar",
+      "type": "MULTI_COLS",
+      "section": "E",
+      "columns": [
+        "Docente/facilitador",
+        "Asistente/estudiante",
+        "Evaluador/Par académico.",
+        "Ninguno21"
+      ]
+    },
+    {
+      "column": "¿Qué tipo de modalidad en la educación continuada optaría por realizar?",
+      "label": "Modalidad preferida en educación continuada",
+      "type": "CATEGORICA",
+      "section": "E"
+    },
+    {
+      "column": "¿Qué temas en educación continuada desea realizar?",
+      "label": "Temas de interés en educación continuada",
+      "type": "CATEGORICA",
+      "section": "E"
+    },
+    {
+      "column": "Estaría interesado en pertenecer a la Asociación Nacional de Egresados y/o representarla",
+      "label": "Interés en pertenecer/representar ASEUTP",
+      "type": "BINARIA",
+      "section": "E"
+    },
+    {
+      "label": "Canales de comunicación que utiliza para mantener contacto con la Universidad",
+      "type": "MULTI_COLS",
+      "section": "E",
+      "columns": [
+        "Redes sociales",
+        "Campus informa22",
+        "Programa del cual egresó",
+        "Oficina de egresados",
+        "Universitaria estéreo23",
+        "Ninguno24",
+        "Otro. ¿Cuál?"
+      ]
+    },
+    {
+      "column": "En qué procesos le gustaría vincularse a la UTP?",
+      "label": "Procesos en los que le gustaría vincularse a la UTP",
+      "type": "CATEGORICA",
+      "section": "E"
+    }
+  ]
+}
