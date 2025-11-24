@@ -62,6 +62,59 @@ def norm(s: str) -> str:
     s = re.sub(r"\s+", " ", s)
     return s
 
+def normalize_none_open(texto: str) -> str:
+    """
+    Agrupa respuestas tipo 'ninguno', 'NA', 'n/a', 'no aplica', 'no'
+    en una sola categoría para preguntas abiertas donde 'no' significa
+    'ninguna' (premios, sugerencias, aportes, etc.).
+    """
+    t = norm(texto)
+    if not t:
+        return ""
+
+    # Variantes de "ninguno / no aplica / NA / no"
+    if (
+        t in {
+            "ninguno", "ninguna", "ningun",
+            "0", "-", "na", "n/a",
+            "no aplica", "no aplica.", "ninguno.", "ninguna.",
+            "ningun.", "ningun0",
+        }
+        or t.startswith("ningun")
+        or t.startswith("ninguna")
+        or t.startswith("no aplica")
+        or t == "no"
+    ):
+        return "Ninguno / No aplica / NA"
+
+    if "sin respuesta" in t:
+        return "SIN RESPUESTA"
+
+    return texto.strip()
+
+
+def normalize_sector(texto: str) -> str:
+    """
+    Normaliza la respuesta del sector donde labora.
+    Solo deja pasar categorías válidas; nombres, teléfonos, etc. se
+    convierten en cadena vacía para luego ser filtrados.
+    """
+    allowed = {
+        "publica": "Pública",
+        "publico": "Pública",
+        "privado": "Privado",
+        "privada": "Privado",
+        "mixto": "Mixto",
+        "mixta": "Mixto",
+        "no aplica": "No aplica",
+        "sin respuesta": "SIN RESPUESTA",
+    }
+    t = norm(texto)
+    if t in allowed:
+        return allowed[t]
+    # cualquier cosa que no sea un sector válido se descarta
+    return ""
+
 
 def normalize_beneficios(texto: str) -> str:
     """
@@ -321,14 +374,35 @@ def chart_binary(df: pd.DataFrame, col: str, label: str):
 def chart_categorical(df: pd.DataFrame, col: str, label: str, top_k: int):
     serie = df[col].dropna().astype(str).str.strip()
 
-    # Normalización especial para beneficios de asociación
+    # ---- Normalización especial para beneficios de asociación ----
     if col.strip() == "¿Qué beneficios te gustaría obtener de una asociación de egresados?":
         serie = serie.apply(normalize_beneficios)
 
+    # ---- Agrupar 'ninguno / NA / n/a / no aplica / no' en UNA sola categoría ----
+    # Solo para preguntas abiertas donde 'no' significa "ninguna"
+    labels_none_open = {
+        "Sugerencias para mejorar la calidad de la formación",
+        "Premios o distinciones recibidas",
+        "Descripción de aportes sociales e impacto",
+    }
+    if label in labels_none_open:
+        serie = serie.apply(normalize_none_open)
+        # quitamos las que quedaron vacías después de normalizar
+        serie = serie.replace("", pd.NA).dropna()
+
+    # ---- Limpieza especial para 'Sector de la organización donde labora' ----
+    if label == "Sector de la organización donde labora":
+        # normalizamos a categorías válidas
+        serie = serie.apply(normalize_sector)
+        # eliminamos las que no son sector (teléfonos, nombres, etc.)
+        serie = serie.replace("", pd.NA).dropna()
+
+    # Si después de todo no queda nada, mostramos mensaje
     if serie.empty:
         st.info("Sin datos para esta pregunta.")
         return
 
+    # Conteos y top_k
     counts = serie.value_counts().head(top_k).reset_index()
     counts.columns = ["Categoría", "Conteo"]
 
